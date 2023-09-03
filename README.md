@@ -4,4 +4,4 @@
 - Avoid spelling mistakes ❌
 - Click the image 👇
 
-[![Sample image](Sample.png)]()
+[![Sample image](Sample.png)](https://chethan0302.github.io/Climate-Clues/)
