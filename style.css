@@ -57,6 +57,9 @@ body {
   color: white;
   font-size: 50px;
 }
+img {
+  filter: brightness(1.5);
+}
 /* *------------------------------------------------------------------- */
 .right {
   height: 100.2%;
