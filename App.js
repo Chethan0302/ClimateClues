@@ -39,7 +39,7 @@ async function weatherReport() {
     try {
         let place = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inp.value.trim()}&APPID=d092a2d1219fceb3877c07106c328d54&units=metric`)
         place = await place.json()
-        let State = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${inp.value.trim()}&APPID=d092a2d1219fceb3877c07106c328d54`)
+        let State = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inp.value.trim()}&APPID=d092a2d1219fceb3877c07106c328d54`)
         State = await State.json()
         // console.log(place)
         // console.log(State)
