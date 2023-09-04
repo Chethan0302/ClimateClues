@@ -73,8 +73,8 @@ async function weatherReport() {
             Pressure.innerText = `${pressure} hPa`;
             Lat.innerText = `Lat ${lat}`;
             Lon.innerText = `Lon ${lon}`;
-            Max.innerText = temp_max;
-            Min.innerText = temp_min;
+            Max.innerText = `${temp_max}° C`;
+            Min.innerText = `${temp_min}° C`;
             rise.innerText = `Rise ${sunrise}`;
             set.innerText = `Set ${sunset}`;
             Visibility.innerText = `${visibility / 1000} km`;
