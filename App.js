@@ -37,12 +37,14 @@ async function weatherReport() {
     image.src = ''
     // Fetching weather and location API
     try {
-        let place = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inp.value.trim()}&APPID=d092a2d1219fceb3877c07106c328d54&units=metric`)
-        place = await place.json()
+
         let State = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inp.value.trim()}&APPID=d092a2d1219fceb3877c07106c328d54`)
         State = await State.json()
+        console.log(State)
+        let [{ lat, lon }] = State
+        let place = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=d092a2d1219fceb3877c07106c328d54&units=metric`)
+        place = await place.json()
         // console.log(place)
-        // console.log(State)
         // If there is any issue with the  API
         if (place.message === `Internal error`) {
             throw new Error(place.message)
@@ -81,10 +83,10 @@ async function weatherReport() {
             if (!state) {
                 Loc.innerText = `${name} (${country})`;
             }
-            if(!country){
+            if (!country) {
                 Loc.innerText = `${name} (${state})`;
             }
-            if(!state && !country) { 
+            if (!state && !country) {
                 Loc.innerText = `${name}`;
             }
         }
