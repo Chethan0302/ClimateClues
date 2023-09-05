@@ -1,46 +1,17 @@
-//Fetching Elements from DOM
-let image = document.getElementById('img');
-let Temperature = document.getElementById('Temperature');
-let Condition = document.getElementById('Condition');
-let Loc = document.getElementById('Loc');
-let Wind = document.getElementById('Wind');
-let Humidity = document.getElementById('Humidity');
-let Feel = document.getElementById('Feel');
-let Description = document.getElementById('Description');
-let Pressure = document.getElementById('Pressure');
-let Lat = document.getElementById('Lat');
-let Lon = document.getElementById('Lon');
-let Max = document.getElementById('Max');
-let Min = document.getElementById('Min');
-let rise = document.getElementById('rise');
-let set = document.getElementById('set');
-let Visibility = document.getElementById('Visibility');
-let inp = document.getElementById('inp')
 // Weather function
 async function weatherReport() {
-    // Clearing previous results
-    Temperature.innerText = ''
-    Condition.innerText = ''
-    Loc.innerText = ''
-    Lat.innerText = ''
-    Lon.innerText = ''
-    Wind.innerText = ''
-    Humidity.innerText = ''
-    Feel.innerText = ''
-    Description.innerText = ''
-    Pressure.innerText = ''
-    Max.innerText = ''
-    Min.innerText = ''
-    rise.innerText = ''
-    set.innerText = ''
-    Visibility.innerText = ''
-    image.src = ''
     // Fetching weather and location API
     try {
-
+        //Fetching Elements from DOM
+        const elementIds = ['img', 'Temperature', 'Condition', 'Loc', 'Wind', 'Humidity', 'Feel', 'Description', 'Pressure', 'Lat', 'Lon', 'Max', 'Min', 'rise', 'set', 'Visibility', 'inp'];
+        let weatherData = {};
+        elementIds.forEach(id => {
+            weatherData[id] = document.getElementById(id);
+            weatherData[id].innerText = '';
+        });
         let State = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inp.value.trim()}&APPID=d092a2d1219fceb3877c07106c328d54`)
         State = await State.json()
-        console.log(State)
+        // console.log(State)
         let [{ lat, lon }] = State
         let place = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=d092a2d1219fceb3877c07106c328d54&units=metric`)
         place = await place.json()
@@ -104,4 +75,3 @@ inp.addEventListener('keydown', function (event) {
         }
     }
 })
-
