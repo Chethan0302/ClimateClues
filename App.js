@@ -7,7 +7,12 @@ async function weatherReport() {
         let weatherData = {};
         elementIds.forEach(id => {
             weatherData[id] = document.getElementById(id);
-            weatherData[id].innerText = '';
+            if (id === 'img') {
+                weatherData[id].src = '';
+            }
+            else {
+                weatherData[id].innerText = '';
+            }
         });
         let State = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inp.value.trim()}&APPID=d092a2d1219fceb3877c07106c328d54`)
         State = await State.json()
